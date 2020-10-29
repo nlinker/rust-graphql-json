@@ -5,16 +5,28 @@ edition = "2018"
 publish = false
 authors = ["Nick Linker <nlinker@gmail.com>"]
 
+[features]
+default = ["sqlx", "juniper"]
+#postgres-interop = ["bytes", "sqlx"]
+graphql = ["juniper"]
+
 [dependencies]
-juniper = { git = "https://github.com/graphql-rust/juniper" }
+chrono = {version = "0.4", features = ["serde"]}
+uuid = "0.8.1"
+base64 = "0.13.0"
+bytes = { version = "0.5", optional = true }
+juniper = { git = "https://github.com/graphql-rust/juniper", optional = true }
 juniper_warp = { git = "https://github.com/graphql-rust/juniper" }
+
+sqlx = { git = "https://github.com/launchbadge/sqlx", default-features = false, features = ["json", "offline", "macros", "postgres", "runtime-tokio", "chrono"], optional = true }
 
 env_logger = "0.6.2"
 futures = { version = "0.3.1", features = ["compat"] }
 log = "0.4.8"
 reqwest = { version = "0.10", features = ["rustls-tls"] }
-serde = { version = "1", features = ["derive"] }
-serde_derive = "1.0"
-serde_json = "1.0"
 tokio = { version = "0.2", features = ["rt-core", "macros"] }
-warp = "0.2"
+warp = "0.2.5"
+
+serde = { version = "1", features = ["derive"] }
+serde_json = "1.0"
+serde_repr = "0.1"

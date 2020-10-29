@@ -3,8 +3,8 @@
 pub struct GraphQLJson(pub serde_json::Value);
 
 #[juniper::graphql_scalar(
-    name = "Json",
-    description = "An opaque identifier, represented as a string"
+    name = "GraphQLJson",
+    description = "An opaque json value",
 )]
 impl<S> GraphQLScalar for GraphQLJson
 where
