@@ -1,3 +1,4 @@
+
 #[derive(serde::Deserialize, serde::Serialize, Debug, Clone)]
 pub struct GraphQLJson(pub serde_json::Value);
 
